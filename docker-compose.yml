@@ -1,0 +1,31 @@
+services:
+  bb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BB_APP_VERSION: "0.44.0"
+        PI_VERSION: "0.87.1"
+
+    restart: unless-stopped
+
+    environment:
+      HOME: /data
+      BB_DATA_DIR: /data/.bb
+      BB_SERVER_BIND_HOST: "0.0.0.0"
+      BB_APP_URL: "https://bb.riddler.agency"
+      # ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+
+    volumes:
+      - bb_data:/data
+
+    networks:
+      - dokploy-network
+
+    labels:
+      - "traefik.http.routers.bb.middlewares=bb-auth"
+      - "traefik.http.middlewares.bb-auth.basicauth.users=admin:$$2b$05$TKHV/4YKqSQIyec4tqvdA.u2bH1Q7n1s1KZ9zJVQLFDuNm4oVpMVW"
+
+
+volumes:
+  bb_data:
