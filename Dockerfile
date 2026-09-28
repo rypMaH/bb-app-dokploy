@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python3 make g++ git ca-certificates curl \
     && rm -rf /var/lib/apt/lists/*
 
-ARG BB_APP_VERSION
+ARG BB_APP_VERSION=0.44.0
 ARG PI_VERSION=0.87.1
 
 RUN npm install -g --allow-scripts=better-sqlite3,node-pty,@parcel/watcher bb-app@${BB_APP_VERSION}

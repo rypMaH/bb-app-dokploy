@@ -3,7 +3,7 @@
 ## Phase 1: Create Deployment Artifacts
 
 - [x] **Task 1: Create Dockerfile**
-  - [x] Write Dockerfile with node:22-bookworm-slim base, system dependencies, ARG BB_APP_VERSION (no default), ARG PI_VERSION=0.84.0, npm install bb-app and pi, set environment, CMD bb-app
+  - [x] Write Dockerfile with node:22-bookworm-slim base, system dependencies, ARG BB_APP_VERSION=0.44.0, ARG PI_VERSION=0.87.1, npm install bb-app and pi, set environment, CMD bb-app
   - [x] Verify Dockerfile has no `ARG BB_APP_VERSION=latest`
 
 - [x] **Task 2: Create docker-compose.yml**
@@ -21,12 +21,12 @@
   - [ ] Update docker-compose.yml network name if it differs from `dokploy-network`
 
 - [ ] **Task 5: Verify DNS**
-  - [ ] Run `dig +short bb.yourdomain.com` and confirm VPS IP
+  - [ ] Run `dig +short bb.riddler.agency` and confirm VPS IP
 
 - [ ] **Task 6: Verify Traefik configuration**
   - [ ] Inspect Dokploy/Traefik config for actual certificate resolver name
   - [ ] Update docker-compose.yml with actual resolver name
-  - [ ] Confirm no conflicting domain/router exists for bb.yourdomain.com
+  - [ ] Confirm no conflicting domain/router exists for bb.riddler.agency
 
 ## Phase 3: Build and Deploy
 
@@ -50,7 +50,7 @@
   - [ ] Verify Pi state exists under `/data/.pi/agent`
 
 - [ ] **Task 11: End-to-end acceptance**
-  - [ ] Access `https://bb.yourdomain.com` through Traefik
+  - [ ] Access `https://bb.riddler.agency` through Traefik
   - [ ] Verify Basic Auth prompt appears
   - [ ] Verify Pi provider shows as usable in bb UI Settings → Providers → Pi
   - [ ] Restart container and verify Pi state persists
